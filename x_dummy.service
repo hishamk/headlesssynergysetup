@@ -1,0 +1,13 @@
+[Unit]
+Description=X window server with a dummy display device
+Before=synergy.service
+
+[Service]
+ExecStart=/usr/bin/X -config /etc/X11/xorg.conf.d/xorg-dummy.config
+ExecStop=killall /usr/bin/X
+Restart=always
+RestartSec=3
+SuccessExitStatus=0 1
+
+[Install]
+RequiredBy=synergy.service
