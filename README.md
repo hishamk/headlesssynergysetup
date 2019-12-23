@@ -13,25 +13,25 @@ We can however use Xorg with a dummy device, which is similar to xvfb, but has t
 The below steps will go through the setup process and enabling a persistent Synergy server from the moment the system boots up.
 
 # Setup steps
-1- apt update
-2- apt upgrade
-3- Compile synergy (see below)
-4- Copy bins to /usr/bin/
-5- apt install xorg xserver-xorg-video-dummy
-6- Change hostname to beautify synergy config definition. Edit /etc/hostname accordingly
-7- Create Synergy config (synergy is the screen name of the server or don't change hostname and add the hostname as an alias to synergy) and copy it to /etc/synergy/synergy.conf
-8- Run xorg and Synergy server: X -config <path_to_your_dummy_config> && synergys -c <your_synergy_config> -f
+1. apt update
+2. apt upgrade
+3. Compile synergy (see below)
+4. Copy bins to /usr/bin/
+5. apt install xorg xserver-xorg-video-dummy
+6. Change hostname to beautify synergy config definition. Edit /etc/hostname accordingly
+7. Create Synergy config (synergy is the screen name of the server or don't change hostname and add the hostname as an alias to synergy) and copy it to /etc/synergy/synergy.conf
+8. Run xorg and Synergy server: X -config <path_to_your_dummy_config> && synergys -c <your_synergy_config> -f
 
 # Start headless Synergy on boot
-1- Copy xorg_dummy.config to /etc/X11/xorg.conf.d/ or whatever your distro uses
-2- Copy x_dummy.service and synergy.service service files to /etc/systemd/system/ or wherever your systemd config resides - chown both to root:root
-3- Reload systemd: systemctl daemon-reload
-4- Start X dummy: systemctl start x_dummy
-5- Check its status: systemctl status x_dummy
-6- Start synergy server: systemctl start synergy
-7- Check its status: systemctl status synergy
-8- Enable both services to start persistently: systemctl enable x_dummy.service; systemctl enable synergy.service
-9- Reboot
+1. Copy xorg_dummy.config to /etc/X11/xorg.conf.d/ or whatever your distro uses
+2. Copy x_dummy.service and synergy.service service files to /etc/systemd/system/ or wherever your systemd config resides - chown both to root:root
+3. Reload systemd: systemctl daemon-reload
+4. Start X dummy: systemctl start x_dummy
+5. Check its status: systemctl status x_dummy
+6. Start synergy server: systemctl start synergy
+7. Check its status: systemctl status synergy
+8. Enable both services to start persistently: systemctl enable x_dummy.service; systemctl enable synergy.service
+9. Reboot
 
 # To build Synergy
 ```
